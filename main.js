@@ -11,8 +11,8 @@ Book.prototype.toggleRead = function(){
     this.read = !this.read
 }
 
-function toggleRead(index){
-    myLibrary[index].toggle.Read();
+function toggleRead(index) {
+    myLibrary[index].toggleRead();
     render()
 }
 
@@ -30,16 +30,16 @@ function render(){
         </div>
         <div class="card-body">
             <p>${book.pages} pages</p> 
-            <p class="read-status">${book.read ? "Read" : "Not Read Yet"}
-            <button class="remove-btn" onclick=(${i})">Remove</button>
+            <p class="read-status">${book.read ? "Read" : "Not Read Yet"}</p>
             <button class="toggle-read-btn" onclick="toggleRead(${i})">Toggle Read</button>
+            <button class="remove-btn" onclick="removeBook(${i})">Remove</button>
         </div>`;
         libraryBook.appendChild(bookEl)
     }
 }
 
 function removeBook(index){
-    myLibrary.splice(index, 1)
+    myLibrary.splice(index, 1);
     render();
 }
 
