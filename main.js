@@ -22,7 +22,7 @@ function render(){
     for (let i = 0; i < myLibrary.length; i++){
         let book = myLibrary[i];
         let bookEl = document.createElement('div')
-        libraryBook.setAttribute("class", "book-card");
+        bookEl.setAttribute("class", "book-card");
         bookEl.innerHTML = `
         <div class="card-header">
             <h2 class="title">${book.title}<h2>
@@ -32,6 +32,7 @@ function render(){
             <p>${book.pages} pages</p> 
             <p class="read-status">${book.read ? "Read" : "Not Read Yet"}
             <button class="remove-btn" onclick=(${i})">Remove</button>
+            <button class="toggle-read-btn" onclick="toggleRead(${i})">Toggle Read</button>
         </div>`;
         libraryBook.appendChild(bookEl)
     }
@@ -55,10 +56,10 @@ render()
 let newBookbtn = document.querySelector("#new-book-btn");
 newBookbtn.addEventListener("click" , function(){
     let newBookForm = document.querySelector('#new-book-form');
-    newBookForm.style.display= "block"
+    newBookForm.style.display= "flex"
 })
 
-document.querySelector('#new-book-form').addEventListener('submit', function(){
+document.querySelector('#new-book-form').addEventListener('submit', function(event){
     event.preventDefault()
     addBookToLibrary()
 })
